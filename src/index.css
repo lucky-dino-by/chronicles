@@ -14,8 +14,19 @@
   --strikethrough-color: #666666;
 }
 
+[data-theme='dark'] {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --border-color: #ffffff;
+  --input-bg: #000000;
+  --input-border: #ffffff;
+  --checkbox-color: #ffffff;
+  --strikethrough-color: #999999;
+}
+
+/* System preference fallback when no data-theme is set */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --bg-color: #000000;
     --text-color: #ffffff;
     --border-color: #ffffff;

@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react'
 import { useLocalStorage } from './hooks/useLocalStorage'
+import { useTheme } from './hooks/useTheme'
 import './App.css'
 
 function formatDate(date: Date): string {
@@ -14,6 +15,7 @@ function formatDate(date: Date): string {
 
 function App() {
   const { todos, addTodo, deleteTodo, toggleTodo } = useLocalStorage()
+  const { theme, toggleTheme } = useTheme()
   const [inputValue, setInputValue] = useState('')
   const currentDate = formatDate(new Date())
 
@@ -29,6 +31,14 @@ function App() {
     <div className="app">
       <header className="header">
         <h1 className="date">{currentDate}</h1>
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Current theme: ${theme}. Click to cycle themes.`}
+          title={`Theme: ${theme}`}
+        >
+          {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
+        </button>
       </header>
 
       <div className="todo-list">
