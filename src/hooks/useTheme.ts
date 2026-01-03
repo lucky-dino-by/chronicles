@@ -4,12 +4,6 @@ type Theme = 'light' | 'dark' | 'system'
 
 const STORAGE_KEY = 'chronicles-theme'
 
-function getSystemTheme(): 'light' | 'dark' {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
-
 function applyTheme(theme: Theme) {
   if (theme === 'system') {
     // Remove data-theme to let CSS media query handle it
